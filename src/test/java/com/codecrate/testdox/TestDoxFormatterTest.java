@@ -28,4 +28,13 @@ public class TestDoxFormatterTest extends TestCase {
 		TestDoxFormatter prettifier = new TestDoxFormatter();
 		assertEquals("Foo bar", prettifier.prettifyTestMethodName("testFooBar"));
 	}
+	public void testPrettyMethodNameKeepsTestPrefixWhenHandlingShouldPrefix() {
+		TestDoxFormatter prettifier = new TestDoxFormatter();
+		assertEquals("should foo", prettifier.prettifyTestMethodName("shouldFoo"));
+	}
+
+	public void testPrettyMethodNameAddsSpacesForCamelCaseCharactersHandlingShouldPrefix() {
+		TestDoxFormatter prettifier = new TestDoxFormatter();
+		assertEquals("should foo bar", prettifier.prettifyTestMethodName("shouldFooBar"));
+	}
 }
